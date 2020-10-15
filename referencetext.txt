@@ -1,0 +1,16 @@
+Reference text for registration form
+
+Meldingsformulier meeverzekeren onderzoek t.b.v. opgave proefpersonenverzekering VU 2021
+
+-Naam van het onderzoek:
+-Protocolummer goedkeuring METc:
+-Aantal mee te verzekeren proefpersonen:
+-Beoogde einddatum onderzoek:
+-Naam van de onderzoeker:
+-Telefoonnummer:
+-Premiekosten t.l.v.:
+(bedrijfsnummer-ordernummer/wbs element of kostenplaats)
+
+Dit formulier vergezeld van de positieve oordeelbrief van de METc insturen
+indien het onderzoek valt onder de proefpersonenverzekering van CNA Company Ltd
+Stichting VU en meeverzekerd dient te worden.

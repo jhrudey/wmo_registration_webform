@@ -18,7 +18,40 @@
 </head>
 
 <body>
- just doing a test
+
+  <img src="https://www.fgb.vu.nl/en/Images/FGB_logo_rgb_wit_en_tcm264-852539.svg">
+  <h2>Registration Form For FGB Research Projects Requiring
+  Research Participants Insurance</h2>
+
+  <p>This form must be completed by researchers who are conducting
+  WMO-applicable research and who have received a letter from the
+  VUmc METc informing them that participant insurance is required.<br>
+  If you have previously completed this form, but the end date of your
+  research project has been extended and/or the number of participants has
+  changed, you must complete the form again.</p>
+
+  <form action="/registration.php" target="_blank" method="post">
+    <label for="title_res">Title of research project:</label><br>
+    <input type="text" id="title_res" name="title_res" size="140" required><br>
+    <label for="prot_num">METc protocol number:</label><br>
+    <input type="text" id="prot_num" name="prot_num" required><br>
+    <label for="num_part">Number of participants requiring insurance:</label><br>
+    <input type="number" id="num_part" name="num_part" min="1" required><br>
+    <label for="end_date">Expected end date of research project:</label><br>
+    <input type="date" id="end_date" name="end_date" required><br>
+    <label for="researcher">Name of principal investigator:</label><br>
+    <input type="text" id="researcher" name="researcher" size="50" required><br>
+    <label for="telephone">Telephone number for principal investigator:</label><br>
+    <input type="text" id="telephone" name="telephone" maxlength="10" required><br>
+    <label for="order_num">Order number (wbs element or kostenplaats):</label><br>
+    <input type="text" id="order_num" name="order_num" required><br>
+    <label for="letter">Letter (PDF) from METc wherein it is stated that
+      insurance is required:</label>
+    <input type="file" id="letter" name="letter" required><br>
+    <br>
+    <input type="submit" value="Submit">
+  </form>
+
 </body>
 
 </html>
