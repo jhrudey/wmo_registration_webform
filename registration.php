@@ -8,6 +8,24 @@ $formv['researcher'] = filter_input(INPUT_POST, 'researcher', FILTER_SANITIZE_SP
 $formv['telephone']  = filter_input(INPUT_POST, 'telephone', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['order_num']  = filter_input(INPUT_POST, 'order_num', FILTER_SANITIZE_SPECIAL_CHARS);
 
+$uploaddir = 'data/';
+$uploadfile = $uploaddir . $formv['prot_num'] . "_" . basename($_FILES['letter']['name']);
+
+$formv['filename'] = $uploadfile;
+echo '<pre>';
+
+echo $uploadfile. "<br>";
+
+if (move_uploaded_file($_FILES['letter']['tmp_name'], $uploadfile)) {
+    echo "File is valid, and was successfully uploaded.\n";
+} else {
+    echo "Possible file upload attack!\n";
+}
+
+echo 'Here is some more debugging info:';
+print_r($_FILES);
+
+
 echo "<pre>";
 
 print_r($formv);
