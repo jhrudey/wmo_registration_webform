@@ -27,11 +27,10 @@
 
   <p>If you have previously completed this form, but the end date of your
     research project has been extended and/or the number of participants has
-    changed, please contact <a href="mailto:research.data.fgb@vu.nl">
-    research.data.fgb@vu.nl</a> with this new information. If you don't know
-    whether you have filled in the form already, you can also contact
+    changed, please fill in this form once again with the new information.
+    If you have questions, contact
     <a href="mailto:research.data.fgb@vu.nl">
-    research.data.fgb@vu.nl</a> to double check.</p>
+    research.data.fgb@vu.nl</a>.</p>
 
   <form action="registration.php" target="_blank" method="post" enctype="multipart/form-data" class="needs-validation"
     novalidate>
@@ -81,13 +80,29 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="telephone" class="col-sm-2 col-form-label">Telephone number for principal investigator:</label>
+      <label for="telephone" class="col-sm-2 col-form-label">Principal investigator's telephone number:</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="telephone" name="telephone" pattern="^[0-9-+\s()]*$" required>
         <!-- FIXME: find correct regexp for dutch phone numbers? -->
         <div class="invalid-feedback">
           Enter the PI's phone number!
         </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="emailPI" class="col-sm-2 col-form-label">Principle investigator's e-mail address:</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="emailPI" name="emailPI" required>
+        <div class="invalid-feedback">
+          Enter the PI's e-mail address!
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="emailother" class="col-sm-2 col-form-label">E-mail address of person completing form
+        (if applicable):</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="emailother" name="emailother">
       </div>
     </div>
     <div class="form-group row">
