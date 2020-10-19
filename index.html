@@ -23,19 +23,24 @@
 
   <p>This form must be completed by researchers who are conducting
     WMO-applicable research and who have received a letter from the
-    VUmc METc informing them that participant insurance is required.<br>
-    If you have previously completed this form, but the end date of your
+    VUmc METc informing them that participant insurance is required.</p>
+
+  <p>If you have previously completed this form, but the end date of your
     research project has been extended and/or the number of participants has
-    changed, you must complete the form again.</p>
+    changed, please contact <a href="mailto:research.data.fgb@vu.nl">
+    research.data.fgb@vu.nl</a> with this new information. If you don't know
+    whether you have filled in the form already, you can also contact
+    <a href="mailto:research.data.fgb@vu.nl">
+    research.data.fgb@vu.nl</a> to double check.</p>
 
   <form action="registration.php" target="_blank" method="post" enctype="multipart/form-data" class="needs-validation"
     novalidate>
     <div class="form-group row">
       <label for="title_res" class="col-sm-2 col-form-label">Title of research project:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="title_res" name="title_res" size="140" required>
+        <input type="text" class="form-control" id="title_res" name="title_res" required>
         <div class="invalid-feedback">
-          Fill out the title!
+          Enter the title of your research!
         </div>
       </div>
     </div>
@@ -44,7 +49,7 @@
       <div class="col-sm-10">
         <input type="text" class="form-control" id="prot_num" name="prot_num" required>
         <div class="invalid-feedback">
-          Fill out the number!
+          Enter the protocol number!
         </div>
       </div>
     </div>
@@ -53,7 +58,7 @@
       <div class="col-sm-10">
         <input type="number" class="form-control" id="num_part" name="num_part" min="1" required>
         <div class="invalid-feedback">
-          Fill out the number!
+          Enter the number of participants!
         </div>
       </div>
     </div>
@@ -62,16 +67,16 @@
       <div class="col-sm-10">
         <input type="text" class="form-control" id="end_date" name="end_date" placeholder="dd-mm-yyyy" required>
         <div class="invalid-feedback">
-          Fill out the number!
+          Enter the (expected) end date!
         </div>
       </div>
     </div>
     <div class="form-group row">
       <label for="researcher" class="col-sm-2 col-form-label">Name of principal investigator:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="researcher" name="researcher" size="50" required>
+        <input type="text" class="form-control" id="researcher" name="researcher" required>
         <div class="invalid-feedback">
-          Fill out the name!
+          Enter the PI's name!
         </div>
       </div>
     </div>
@@ -81,7 +86,7 @@
         <input type="text" class="form-control" id="telephone" name="telephone" pattern="^[0-9-+\s()]*$" required>
         <!-- FIXME: find correct regexp for dutch phone numbers? -->
         <div class="invalid-feedback">
-          Fill out the phonenumber!
+          Enter the PI's phone number!
         </div>
       </div>
     </div>
@@ -90,7 +95,7 @@
       <div class="col-sm-10">
         <input type="text" class="form-control" id="order_num" name="order_num" required>
         <div class="invalid-feedback">
-          Fill out the ordernumber!
+          Enter the order number!
         </div>
       </div>
     </div>
@@ -102,7 +107,7 @@
         <input type="file" class="form-control" id="letter" name="letter" class="form-control" accept="application/pdf"
           required>
         <div class="invalid-feedback">
-          Choose a file!
+          Upload the METc letter!
         </div>
       </div>
     </div>
