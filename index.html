@@ -19,111 +19,126 @@
 
   <img src="img/FGB_logo_rgb_wit_en_tcm264-852539.svg">
   <h2>Registration Form For FGB Research Projects Requiring
-    Research Participants Insurance</h2>
+    Insurance For Research Participants</h2>
 
-  <p>This form must be completed by researchers who are conducting
-    WMO-applicable research and who have received a letter from the
-    VUmc METc informing them that participant insurance is required.</p>
+  <p>This form must be completed by FGB researchers who are conducting
+    medical research that falls under the purview of the WMO and
+    who are required to have insurance in place for their research subjects.
+    This requirement is stated on the assessment letter received from the METC.
+  </p>
+  <p> The data collected with this form will be used to inform VU Corporate Finance about
+    the number of participants that will need to be ensured for the coming calendar
+    year. It is important that the information you provide is up-to-date and accurate so that
+    you receive the necessary insurance coverage.
+  </p>
+  <p>If you are uncertain whether you completed the form previously, fill it in again to
+    make sure you are included in the calculations. If you have previously completed
+    this form, but the end date of your
+    research project has been extended and/or the number of participants for the
+    coming year has changed, please fill in this form once again with the new information.</p>
+  </p>
+  <p><strong>Ensure that you have completed this form by
+    September 30 of each calendar year</strong></p>
 
-  <p>If you have previously completed this form, but the end date of your
-    research project has been extended and/or the number of participants has
-    changed, please fill in this form once again with the new information.
-    If you have questions, contact
+  <p>If you have questions, contact
     <a href="mailto:research.data.fgb@vu.nl">
     research.data.fgb@vu.nl</a>.</p>
+
+<br></br>
 
   <form action="registration.php" target="_blank" method="post" enctype="multipart/form-data" class="needs-validation"
     novalidate>
     <div class="form-group row">
-      <label for="title_res" class="col-sm-2 col-form-label">Title of research project:</label>
+      <label for="title_research" class="col-sm-2 col-form-label">Title of research project:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="title_res" name="title_res" required>
+        <input type="text" class="form-control" id="title_research" name="title_research" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="protocol_number" class="col-sm-2 col-form-label">Research protocol number:
+      </label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="protocol_number" name="protocol_number"
+        placeholder="NL12345.123.12"
+        pattern="^NL\d{5}\.\d{3}\.\d{2}$" required>
+        <!-- I'd like to make a tooltip here, but I'm not having much luck. I was trying
+        with CSS tooltips, but might want to try Popper. Looks like Popper doesn't really
+        have an option to download the dependencies, they just want you to use CDN-->
         <div class="invalid-feedback">
-          Enter the title of your research!
+          Please enter a valid protocol number! The format should be
+          "NLXXXXX.XXX.XX where X represents the digits of the protocol number."
         </div>
       </div>
     </div>
     <div class="form-group row">
-      <label for="prot_num" class="col-sm-2 col-form-label">METc protocol number:</label>
+      <label for="metc_number" class="col-sm-2 col-form-label">METC (or CCMO) Registration Number:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="prot_num" name="prot_num" required>
-        <div class="invalid-feedback">
-          Enter the protocol number!
-        </div>
+        <input type="text" class="form-control" id="metc_number" name="metc_number"
+        placeholder="2022.123" required>
       </div>
     </div>
     <div class="form-group row">
-      <label for="num_part" class="col-sm-2 col-form-label">Number of participants requiring insurance:</label>
+      <label for="number_participants" class="col-sm-2 col-form-label">Number of participants requiring insurance:</label>
       <div class="col-sm-10">
-        <input type="number" class="form-control" id="num_part" name="num_part" min="1" required>
-        <div class="invalid-feedback">
-          Enter the number of participants!
-        </div>
+        <input type="number" class="form-control" id="number_participants" name="number_participants" min="1" required>
       </div>
     </div>
     <div class="form-group row">
       <label for="end_date" class="col-sm-2 col-form-label">Expected end date of research project:</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="end_date" name="end_date" placeholder="dd-mm-yyyy" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="principal_investigator" class="col-sm-2 col-form-label">Name of principal investigator:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="principal_investigator" name="principal_investigator" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="telephone_number" class="col-sm-2 col-form-label">Principal investigator's telephone number:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="telephone_number" name="telephone_number"
+        pattern="^0([0-9]{9}$|[0-9\-\s]{10}$|[0-9\-\s]{11}$)" required>
         <div class="invalid-feedback">
-          Enter the (expected) end date!
+          Please enter a valid phone number!
         </div>
       </div>
     </div>
     <div class="form-group row">
-      <label for="researcher" class="col-sm-2 col-form-label">Name of principal investigator:</label>
+      <label for="email_prinicipal_investigator" class="col-sm-2 col-form-label">Principle investigator's e-mail address:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="researcher" name="researcher" required>
+        <input type="email" class="form-control" id="email_prinicipal_investigator"
+        name="email_prinicipal_investigator" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" required>
         <div class="invalid-feedback">
-          Enter the PI's name!
+          Please enter a valid e-mail address!
         </div>
       </div>
     </div>
     <div class="form-group row">
-      <label for="telephone" class="col-sm-2 col-form-label">Principal investigator's telephone number:</label>
+      <label for="user_email" class="col-sm-2 col-form-label">E-mail address of person completing form
+        (if not principal investigator):</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="telephone" name="telephone" pattern="^[0-9-+\s()]*$" required>
-        <!-- FIXME: find correct regexp for dutch phone numbers? -->
+        <input type="email" class="form-control" id="user_email" name="user_email"
+        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$">
         <div class="invalid-feedback">
-          Enter the PI's phone number!
+          Please enter a valid e-mail address!
         </div>
       </div>
     </div>
     <div class="form-group row">
-      <label for="emailPI" class="col-sm-2 col-form-label">Principle investigator's e-mail address:</label>
+      <label for="order_number" class="col-sm-2 col-form-label">Order number (wbs element or kostenplaats):</label>
       <div class="col-sm-10">
-        <input type="email" class="form-control" id="emailPI" name="emailPI" required>
-        <div class="invalid-feedback">
-          Enter the PI's e-mail address!
-        </div>
+        <input type="text" class="form-control" id="order_number" name="order_number" required>
       </div>
     </div>
     <div class="form-group row">
-      <label for="emailother" class="col-sm-2 col-form-label">E-mail address of person completing form
-        (if applicable):</label>
-      <div class="col-sm-10">
-        <input type="email" class="form-control" id="emailother" name="emailother">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="order_num" class="col-sm-2 col-form-label">Order number (wbs element or kostenplaats):</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="order_num" name="order_num" required>
-        <div class="invalid-feedback">
-          Enter the order number!
-        </div>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="letter" class="col-sm-2 col-form-label">Letter (PDF) from METc wherein it is stated that
-        insurance is required:</label>
+      <label for="metc_letter" class="col-sm-2 col-form-label">Letter from METc wherein it is stated that
+        insurance is required (<strong>PDF format only</strong>):</label>
       <div class="col-sm-10">
         <input type="hidden" name="MAX_FILE_SIZE" value="30000000" />
-        <input type="file" class="form-control" id="letter" name="letter" class="form-control" accept="application/pdf"
+        <input type="file" class="form-control" id="metc_letter" name="metc_letter" class="form-control" accept="application/pdf"
           required>
-        <div class="invalid-feedback">
-          Upload the METc letter!
-        </div>
       </div>
     </div>
     <div class="form-group row">

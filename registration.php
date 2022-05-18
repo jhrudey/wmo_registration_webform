@@ -1,15 +1,17 @@
-<?php 
+<?php
 
-$formv['title_res']  = filter_input(INPUT_POST, 'title_res', FILTER_SANITIZE_SPECIAL_CHARS);
-$formv['prot_num']   = filter_input(INPUT_POST, 'prot_num', FILTER_SANITIZE_SPECIAL_CHARS);
-$formv['num_part']   = filter_input(INPUT_POST, 'num_part', FILTER_SANITIZE_NUMBER_INT);
+$formv['title_research']  = filter_input(INPUT_POST, 'title_research', FILTER_SANITIZE_SPECIAL_CHARS);
+$formv['protocol_number']   = filter_input(INPUT_POST, 'protocol_number', FILTER_SANITIZE_SPECIAL_CHARS);
+$formv['metc_number']   = filter_input(INPUT_POST, 'metc_number', FILTER_SANITIZE_SPECIAL_CHARS);
+$formv['number_participants']   = filter_input(INPUT_POST, 'number_participants', FILTER_SANITIZE_NUMBER_INT);
 $formv['end_date']   = filter_input(INPUT_POST, 'end_date', FILTER_SANITIZE_SPECIAL_CHARS);
-$formv['researcher'] = filter_input(INPUT_POST, 'researcher', FILTER_SANITIZE_SPECIAL_CHARS);
-$formv['telephone']  = filter_input(INPUT_POST, 'telephone', FILTER_SANITIZE_SPECIAL_CHARS);
-$formv['order_num']  = filter_input(INPUT_POST, 'order_num', FILTER_SANITIZE_SPECIAL_CHARS);
+$formv['principal_investigator'] = filter_input(INPUT_POST, 'principal_investigator', FILTER_SANITIZE_SPECIAL_CHARS);
+$formv['telephone_number']  = filter_input(INPUT_POST, 'telephone_number', FILTER_SANITIZE_SPECIAL_CHARS);
+$formv['email_prinicipal_investigator']  = filter_input(INPUT_POST, 'email_prinicipal_investigator', FILTER_SANITIZE_SPECIAL_CHARS);
+$formv['order_number']  = filter_input(INPUT_POST, 'order_number', FILTER_SANITIZE_SPECIAL_CHARS);
 
 $uploaddir = 'data/';
-$uploadfile = $uploaddir . $formv['prot_num'] . "_" . basename($_FILES['letter']['name']);
+$uploadfile = $uploaddir . $formv['protocol_number'] . "_" . basename($_FILES['letter']['name']);
 
 $formv['filename'] = $uploadfile;
 echo '<pre>';
