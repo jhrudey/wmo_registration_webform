@@ -18,24 +18,35 @@
 <body>
 
   <img src="img/FGB_logo_rgb_wit_en_tcm264-852539.svg">
-  <h2>Registration Form For FGB Research Projects Requiring
-    Insurance For Research Participants</h2>
-
+  <h3>Registration Form for FGB Research Projects Requiring Insurance for Research Subjects</h3>
+  <br>
   <p>This form must be completed by FGB researchers who are conducting
-    medical research that falls under the purview of the WMO and
+    medical research that is <a
+    href="https://english.ccmo.nl/investigators/legal-framework-for-medical-scientific-research/your-research-is-it-subject-to-the-wmo-or-not"
+    target="_blank">
+    subject to the WMO law</a> and
     who are required to have insurance in place for their research subjects.
-    This requirement is stated on the assessment letter received from the METC.
+    This requirement is stated in the letter of approval received from a <a
+    href="https://english.ccmo.nl/mrecs/accredited-mrecs" target="_blank">
+    Medical Research Ethics Committee (METC)</a>, such as the
+    <a href="https://www.vumc.nl/research/overzicht/medisch-ethische-toetsingscommissie/over-metc-vumc.htm"
+     target="_blank">
+    Medical Ethics Review Committee of the VUmc</a>.
+    In some cases, the approval letter will be from the
+    <a href="https://english.ccmo.nl/mrecs/accredited-mrecs/central-committee-on-research-involving-human-subjects-ccmo"
+     target="_blank">Central Committee on Research Involving Human Subjects (CCMO)</a>.
   </p>
   <p> The data collected with this form will be used to inform VU Corporate Finance about
-    the number of participants that will need to be ensured for the coming calendar
+    the number of participants that need to be insured for the coming calendar
     year. It is important that the information you provide is up-to-date and accurate so that
     you receive the necessary insurance coverage.
   </p>
   <p>If you are uncertain whether you completed the form previously, fill it in again to
-    make sure you are included in the calculations. If you have previously completed
-    this form, but the end date of your
-    research project has been extended and/or the number of participants for the
-    coming year has changed, please fill in this form once again with the new information.</p>
+    ensure you are included in the calculations.
+  </p>
+  <p> If you have previously completed this form, but the end date of your
+    research project has been extended into the coming calendar year and/or the number of participants for the
+    coming year has changed, fill in this form once again with this new information.</p>
   </p>
   <p><strong>Ensure that you have completed this form by
     September 30 of each calendar year</strong></p>
@@ -52,6 +63,9 @@
       <label for="title_research" class="col-sm-2 col-form-label">Title of research project:</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="title_research" name="title_research" required>
+        <div class="invalid-feedback">
+          Please enter the title of your research project!
+        </div>
       </div>
     </div>
     <div class="form-group row">
@@ -59,7 +73,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="protocol_number" name="protocol_number"
-        placeholder="NL12345.123.12"
+        placeholder="e.g. NL12345.123.12"
         pattern="^NL\d{5}\.\d{3}\.\d{2}$" required>
         <!-- I'd like to make a tooltip here, but I'm not having much luck. I was trying
         with CSS tooltips, but might want to try Popper. Looks like Popper doesn't really
@@ -74,25 +88,40 @@
       <label for="metc_number" class="col-sm-2 col-form-label">METC (or CCMO) Registration Number:</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="metc_number" name="metc_number"
-        placeholder="2022.123" required>
+        placeholder="e.g. 2022.123" required>
+        <div class="invalid-feedback">
+          Please enter a valid METC or CCMO registration number! This is usually listed under
+          "Ons Kenmerk" on the approval letter. The number includes the year
+          that your research was initially submitted for approval.
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <label for="number_participants" class="col-sm-2 col-form-label">Number of participants requiring insurance:</label>
       <div class="col-sm-10">
         <input type="number" class="form-control" id="number_participants" name="number_participants" min="1" required>
+        <div class="invalid-feedback">
+          Please enter the expected number of participants that will require insurance for the coming
+          calendar year!
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <label for="end_date" class="col-sm-2 col-form-label">Expected end date of research project:</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="end_date" name="end_date" placeholder="dd-mm-yyyy" required>
+        <div class="invalid-feedback">
+          Please enter the date you expect your research project to end!
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <label for="principal_investigator" class="col-sm-2 col-form-label">Name of principal investigator:</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="principal_investigator" name="principal_investigator" required>
+        <div class="invalid-feedback">
+          Please enter the name of the principal investigator!
+        </div>
       </div>
     </div>
     <div class="form-group row">
@@ -127,9 +156,13 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="order_number" class="col-sm-2 col-form-label">Order number (wbs element or kostenplaats):</label>
+      <label for="order_number" class="col-sm-2 col-form-label">Cost Unit (a.k.a. WBS element or kostenplaats):</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="order_number" name="order_number" required>
+        <div class="invalid-feedback">
+          Please enter your cost unit number (also known as WBS elemnent or kostenplaats)! If you don't
+          know your cost unit number, contact your supervisor.
+        </div>
       </div>
     </div>
     <div class="form-group row">
@@ -139,6 +172,10 @@
         <input type="hidden" name="MAX_FILE_SIZE" value="30000000" />
         <input type="file" class="form-control" id="metc_letter" name="metc_letter" class="form-control" accept="application/pdf"
           required>
+        <div class="invalid-feedback">
+          Please upload a PDF of the letter wherein the METC or CCMO declared that
+          participant insurance is necessary!
+        </div>
       </div>
     </div>
     <div class="form-group row">
