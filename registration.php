@@ -8,6 +8,7 @@ $formv['end_date']   = filter_input(INPUT_POST, 'end_date', FILTER_SANITIZE_SPEC
 $formv['principal_investigator'] = filter_input(INPUT_POST, 'principal_investigator', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['telephone_number']  = filter_input(INPUT_POST, 'telephone_number', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['email_prinicipal_investigator']  = filter_input(INPUT_POST, 'email_prinicipal_investigator', FILTER_SANITIZE_SPECIAL_CHARS);
+$formv['email']  = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['order_number']  = filter_input(INPUT_POST, 'order_number', FILTER_SANITIZE_SPECIAL_CHARS);
 
 $uploaddir = 'data/';
