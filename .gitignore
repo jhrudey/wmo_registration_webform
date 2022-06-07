@@ -1,5 +1,6 @@
 data/*
 !data/.gitkeep 
+site/inc/db.cfg.php
 **/node_modules
 **/.vscode
 yarn.lock

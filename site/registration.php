@@ -1,5 +1,6 @@
 <?php
 
+// Do some input filtering
 $formv['title_research']  = filter_input(INPUT_POST, 'title_research', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['protocol_number']   = filter_input(INPUT_POST, 'protocol_number', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['metc_number']   = filter_input(INPUT_POST, 'metc_number', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -11,15 +12,17 @@ $formv['email_prinicipal_investigator']  = filter_input(INPUT_POST, 'email_prini
 $formv['email']  = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['order_number']  = filter_input(INPUT_POST, 'order_number', FILTER_SANITIZE_SPECIAL_CHARS);
 
-$uploaddir = 'data/';
-$uploadfile = $uploaddir . $formv['protocol_number'] . "_" . basename($_FILES['letter']['name']);
+// moved data-dir outside the site-dir
+$uploaddir = '../data/';
+
+$uploadfile = $uploaddir . $formv['protocol_number'] . "_" . basename($_FILES['metc_letter']['name']);
 
 $formv['filename'] = $uploadfile;
 echo '<pre>';
 
 echo $uploadfile. "<br>";
 
-if (move_uploaded_file($_FILES['letter']['tmp_name'], $uploadfile)) {
+if (move_uploaded_file($_FILES['metc_letter']['tmp_name'], $uploadfile)) {
     echo "File is valid, and was successfully uploaded.\n";
 } else {
     echo "Possible file upload attack!\n";
