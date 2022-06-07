@@ -1,2 +1,6 @@
 data/*
 !data/.gitkeep 
+**/node_modules
+**/.vscode
+yarn.lock
+composer.lock
