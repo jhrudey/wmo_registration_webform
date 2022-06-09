@@ -12,10 +12,14 @@ $formv['email_prinicipal_investigator']  = filter_input(INPUT_POST, 'email_prini
 $formv['email']  = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['order_number']  = filter_input(INPUT_POST, 'order_number', FILTER_SANITIZE_SPECIAL_CHARS);
 
+// create a timestamp to use in the filename
+$letterTimestamp = date('YmdHi');
+
 // moved data-dir outside the site-dir
 $uploaddir = '../data/';
 
-$uploadfile = $uploaddir . $formv['protocol_number'] . "_" . basename($_FILES['metc_letter']['name']);
+// format filename: protocolNumber_letterTimestamp_originalName
+$uploadfile = $uploaddir . $formv['protocol_number'] . "_" .$letterTimestamp. "_" . basename($_FILES['metc_letter']['name']);
 
 $formv['filename'] = $uploadfile;
 echo '<pre>';

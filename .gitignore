@@ -1,6 +1,7 @@
 data/*
 !data/.gitkeep 
 site/inc/db.cfg.php
+site/inc/mail.cfg.php
 **/node_modules
 **/.vscode
 yarn.lock

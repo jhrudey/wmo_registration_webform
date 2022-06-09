@@ -34,6 +34,8 @@ CREATE TABLE IF NOT EXISTS `registrations` (
   `email` varchar(45) DEFAULT NULL,
   `order_number` varchar(45) DEFAULT NULL,
   `metc_letter` varchar(255) DEFAULT NULL,
+  `status` int DEFAULT '1',
+  `comments` text,
   `date_time_created` datetime DEFAULT CURRENT_TIMESTAMP,
   `date_time_modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -42,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `registrations` (
 
 ### Database credentials
 
-Create/edit the `site/inc/db.cfg.php` file (not in git) to store the credentials:
+Create/edit the `site/inc/db.cfg.php` file (.gitignore) to store the credentials:
 
 ```php
 <?php
@@ -75,4 +77,23 @@ $ sudo chmod g+w data/
 ```php
 post_max_size = 16M
 upload_max_filesize = 16M
+```
+
+## Email
+
+A confirmation email will be sent to `email` (if available) or `email_prinicipal_investigator` and to research.data.fgb@vu.nl to inform there is a new submission.
+
+### Email credentials
+
+Create/edit the `site/inc/mail.cfg.php` file (.gitignore) to store the credentials:
+
+```php
+<?php
+$mailHost = 'mails.vu.nl';
+$mailUser = 'mailusername';                    
+$mailPasswd = 'mailuserpassword';     
+
+$mailFromAddress = 'mailadres@vu.nl';
+$mailFromDisplayName  ='My Displayname';
+
 ```
