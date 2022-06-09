@@ -1,8 +1,15 @@
+# ignore data folder contents
 data/*
 !data/.gitkeep 
+# ignore src vendor but keep site/vendor
+**/vendor
+!site/vendor
+# ignore configfiles
 site/inc/db.cfg.php
 site/inc/mail.cfg.php
+# ignore src node_modules
 **/node_modules
+# ignore some build specific files 
 **/.vscode
 yarn.lock
 composer.lock

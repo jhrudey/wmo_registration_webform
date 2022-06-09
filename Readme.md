@@ -1,14 +1,20 @@
 # Registration Form for FGB research projects requiring Research Participants Insurance
 
+## Setup/build source
 
-
-## YARN
-
-Install dependencies
+### Install CSS/JavaScript dependencies using Yarn
 
 ```bash
 $ yarn install
 ```
+
+### Install PHP dependencies using Composer
+
+```bash
+$ composer require phpmailer/phpmailer
+```
+
+### Build
 
 Move relevant files to css/js-folders in `/site/`
 

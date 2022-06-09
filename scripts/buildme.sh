@@ -16,3 +16,6 @@ cp ./node_modules/jquery/dist/jquery.min.* ./site/js/
 
 echo "install popperjs"
 cp -r ./node_modules/@popperjs/core/dist/umd/popper.min.* ./site/js/
+
+echo "installing vendor folders" 
+cp -r ./vendor ./site/
