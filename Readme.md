@@ -103,4 +103,5 @@ $mailPasswd = 'mailuserpassword';
 $mailFromAddress = 'mailadres@vu.nl';
 $mailFromDisplayName  ='My Displayname';
 
+$researchDataMailAddress = 'research.data.fgb@vu.nl';
 ```
