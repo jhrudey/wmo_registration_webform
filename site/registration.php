@@ -74,8 +74,7 @@ if ($uploadSuccess) {
     // $sendMyMail = false;
 
     // --- start RDM Notification mail --
-    // TODO: send notification email to research.data.fgb@vu.nl
-    $recipientAddress = "mbd500@vu.nl";
+    $recipientAddress = $researchDataMailAddress;
 
     $rcpToRDM = $recipientAddress;
     // compose message
@@ -121,7 +120,6 @@ if ($uploadSuccess) {
     // --- end RDM Notification mail --
 
     // --- start Respondent mail ---
-    // TODO: send notification email to Respondent: $toAddress
     $recipientAddress = $toAddress;
 
     $rcpToRespondent = $recipientAddress;
