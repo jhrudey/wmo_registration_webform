@@ -29,6 +29,7 @@ $formv['telephone_number']  = filter_input(INPUT_POST, 'telephone_number', FILTE
 $formv['email_prinicipal_investigator']  = filter_input(INPUT_POST, 'email_prinicipal_investigator', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['email']  = filter_input(INPUT_POST, 'user_email', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['order_number']  = filter_input(INPUT_POST, 'order_number', FILTER_SANITIZE_SPECIAL_CHARS);
+$formv['comments_respondent']  = filter_input(INPUT_POST, 'order_number', FILTER_SANITIZE_SPECIAL_CHARS);
 
 // create a timestamp to use in the filename
 $letterTimestamp = date('YmdHi');

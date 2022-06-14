@@ -41,7 +41,8 @@ CREATE TABLE IF NOT EXISTS `registrations` (
   `order_number` varchar(45) DEFAULT NULL,
   `metc_letter` varchar(255) DEFAULT NULL,
   `status` int DEFAULT '1',
-  `comments` text,
+  `comments_respondent` text,
+  `comments_admin` text,
   `date_time_created` datetime DEFAULT CURRENT_TIMESTAMP,
   `date_time_modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)

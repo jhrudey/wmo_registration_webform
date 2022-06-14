@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @project: wmo_insurence_resistration
  * 
@@ -40,7 +39,8 @@ function insertNewRegistration($formv)
         "' . $formv['email_prinicipal_investigator'] . '",
         "' . $formv['email'] . '",
         "' . $formv['order_number'] . '",
-        "' . $formv['filename'] . '"
+        "' . $formv['filename'] . '",
+        "' . $fromv['comments_respondent'] .'"
     );';
    // echo "<p>$query</p>";
 // FIXME: do not echo, only return!
