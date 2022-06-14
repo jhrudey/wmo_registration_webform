@@ -27,7 +27,7 @@ $ yarn buildme
 ```sql
 CREATE DATABASE IF NOT EXISTS `wmo_insurance_registration`;
 
-CREATE TABLE IF NOT EXISTS `registrations` (
+CREATE TABLE IF NOT EXISTS `wmo_insurance_registration`.`registrations` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title_research` text,
   `protocol_number` char(14) DEFAULT NULL,
