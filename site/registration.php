@@ -29,7 +29,7 @@ $formv['telephone_number']  = filter_input(INPUT_POST, 'telephone_number', FILTE
 $formv['email_prinicipal_investigator']  = filter_input(INPUT_POST, 'email_prinicipal_investigator', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['email']  = filter_input(INPUT_POST, 'user_email', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['order_number']  = filter_input(INPUT_POST, 'order_number', FILTER_SANITIZE_SPECIAL_CHARS);
-$formv['comments_respondent']  = filter_input(INPUT_POST, 'order_number', FILTER_SANITIZE_SPECIAL_CHARS);
+$formv['comments_respondent']  = filter_input(INPUT_POST, 'comments_respondent', FILTER_SANITIZE_SPECIAL_CHARS);
 
 // create a timestamp to use in the filename
 $letterTimestamp = date('YmdHi');
@@ -42,52 +42,47 @@ $formv['filename'] = $uploadfile;
 
 // check if we can move the uploaded file to the data uploaddir
 if (move_uploaded_file($_FILES['metc_letter']['tmp_name'], $uploadfile)) {
-    echo "File is valid, and was successfully uploaded.\n";
+    $uploadMessage = "File is valid, and was successfully uploaded.";
     $uploadSuccess = true;
 } else {
-    echo "Hmm, something went wrong here!\n";
+    $uploadMessage = "Hmm, something went wrong here!";
     $uploadSuccess = false;
 }
 
 // ok, now we got the checks out of the way, we can start inserting/mailing....
 
 if ($uploadSuccess) {
-    echo '<pre>';
-    echo '<hr>';
     // TODO: insert this into a database table....
-
     insertNewRegistration($formv);
-    echo '<hr>';
 
     // Confirmation Email
     // TODO: send confirmation email to researcher
     // Determine address to send to
     $toAddress = "";
-    if(isset($formv['email']) && $formv['email'] != "") {
+    if (isset($formv['email']) && $formv['email'] != "") {
         $toAddress = $formv['email'];
         $sendMyMail = true;
-    }elseif(isset($formv['email_prinicipal_investigator']) && $formv['email_prinicipal_investigator'] != "") {
+    } elseif (isset($formv['email_prinicipal_investigator']) && $formv['email_prinicipal_investigator'] != "") {
         $toAddress = $formv['email_prinicipal_investigator'];
         $sendMyMail = true;
-    }else{
+    } else {
         die("No valid emailaddress found!");
         $sendMyMail = false;
     }
 
-    echo "<p>TO: $toAddress</p>";
-    // Notification Email
-    // TODO: send notification email to research.data.fgb@vu.nl
-    
-    // FIXME: remove this!
-    $sendMyMail = false;
+    // FIXME: remove this ($sendMyMail = false;) 
+    // $sendMyMail = false;
 
-    $recipientAddress = "m.e.benard@vu.nl"; 
+    // --- start RDM Notification mail --
+    // TODO: send notification email to research.data.fgb@vu.nl
+    $recipientAddress = "mbd500@vu.nl";
+
     $rcpToRDM = $recipientAddress;
     // compose message
-    $subjectRDM = 'New Insurance Registration Form: ' . $formv['title_research'] . '';
+    $subjectRDM = 'New Record Participants Insurance Register: ' . $formv['title_research'] . '';
     $messageRDM = '<html><body>';
     $messageRDM .= '<p>';
-    $messageRDM .= 'project: ' . $formv['title_research'] . '<br><br>';
+    $messageRDM .= '' . $formv['title_research'] . ' with ' . $formv['protocol_number'] . ' has been submitted to the Participants Insurance Register by ' . $toAddress . '<br><br>';
     $messageRDM .= '</p>';
     $messageRDM .= '</body></html>';
 
@@ -118,31 +113,135 @@ if ($uploadSuccess) {
         if ($sendMyMail) {
             $mailRDM->send();
 
-            $ok = true;
-            $show  = '<p>';
-            $show .= '<h2> Thank you!</h2>';
-            $show .= 'Your request was send to the Support desk.';
-            $show .= '</p>';
-            $show .= '<p>';
-            $show .= '<a href="./">Click here to go back to the request form</a>. You will be automatically transfered in <span id="seconds">15</span> seconds.';
-
-            $show  .= '<p>';
-            $show .= '';
-            echo $show;
+            $okRDM = true;
         }
     } catch (Exception $e) {
-        $ok = false;
-        $show = '<div class="alert alert-danger"> Bericht kon niet worden verzonden. Mailer Error: ' . $mailRDM->ErrorInfo . '</div>';
-        echo $show;
+        $okRDM = false;
+    }
+    // --- end RDM Notification mail --
+
+    // --- start Respondent mail ---
+    // TODO: send notification email to Respondent: $toAddress
+    $recipientAddress = $toAddress;
+
+    $rcpToRespondent = $recipientAddress;
+    // compose message
+    $subjectRespondent = 'WMO Insurance Registration: ' . $formv['title_research'] . '';
+    $messageRespondent = '<html><body>';
+    $messageRespondent .= '<p>';
+    $messageRespondent .= 'Thank you for registering the information about your medical research that requires participants\' insurance. If you have any questions or comments please contact <a href="mailto:research.data.fgb@vu.nl">research.data.fgb@vu.nl</a>.<br><br>';
+    $messageRespondent .= '</p>';
+    $messageRespondent .= '</body></html>';
+
+    $mailRespondent = new PHPMailer(true);
+    try {
+        //Server settings
+        //$mailRespondent->SMTPDebug = SMTP::DEBUG_SERVER;                    // Enable verbose debug output
+        $mailRespondent->isSMTP();                                            // Send using SMTP
+        $mailRespondent->Host       = $mailHost;                              // Set the SMTP server to send through
+        $mailRespondent->SMTPAuth   = true;                                   // Enable SMTP authentication
+
+        $mailRespondent->Username   = $mailUser;                              // SMTP username
+        $mailRespondent->Password   = $mailPasswd;                            // SMTP password
+
+        $mailRespondent->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+        $mailRespondent->Port       = 587;                                    // TCP port to connect to
+
+        //Recipients
+        $mailRespondent->setFrom($mailFromAddress, $mailFromDisplayName);
+        $mailRespondent->addAddress($rcpToRespondent);      // Add a recipient
+        $mailRespondent->addReplyTo('research.data.fgb@vu.nl', 'FGB Research Data');
+        // Content
+        $mailRespondent->isHTML(true);       // Set email format to HTML
+        $mailRespondent->Subject = $subjectRespondent;
+        $mailRespondent->Body    = $messageRespondent;
+
+        // only try to send if checks are OK!
+        if ($sendMyMail) {
+            $mailRespondent->send();
+            $okRespondent = true;
+        }
+    } catch (Exception $e) {
+        $okRespondent = false;
     }
 
-    // -------------------------------------------------
-    // just for debug!
-    if (!$sendMyMail) {
-        echo '<pre>';
-        echo "mail not send!<br>";
-        echo 'Subject: ' . $subjectRDM;
-        echo $messageRDM;
-        echo '</pre>';
-    }
-} // end 
+    // --- end Respondent mail ---
+
+?>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <!-- Local CSS -->
+        <link rel="stylesheet" href="css/style.css">
+
+        <title class="title">Registration - articipant Insurance Registration Form</title>
+    </head>
+
+    <body>
+        <img src="img/FGB_logo_rgb_wit_en_tcm264-852539.svg">
+        <h3>Registration Form for FGB Research Projects Requiring Insurance for Research Subjects</h3>
+        <br>
+        <div class="container px-4 py-2">
+        <?php
+
+        // -- display a send-message
+        if ($okRDM == true && $okRespondent == true) {
+
+            echo '<h1 class="text-success"> Thank you!</h1>';
+            echo '<p>';
+            echo 'Your request was send to the Research Data Team.';
+            echo '</p><p>';
+            echo '<a href="./">Click here to go back to the request form</a>';
+            echo '<p>';
+        } else {
+            echo '<h1 class="text-danger"> ERROR!</h1>';
+            echo '<p>';
+            if ($okRespondent == false) {
+                echo '<div class="alert alert-danger"> Confirmation message could not be sent! Mailer Error: ' . $mailRespondent->ErrorInfo . '</div>';
+            }
+            if ($okRDM == false) {
+                echo '<div class="alert alert-danger"> Notification message could not be sent! Mailer Error: ' . $mailRespondent->ErrorInfo . '</div>';
+            }
+            echo '</p><p>';
+            echo '<a href="./">Click here to go back to the request form</a>';
+            echo '<p>';
+        }
+
+        // -------------------------------------------------
+        // just for debug!
+        if (!$sendMyMail) {
+            echo '<p>';
+            echo "mail not send!<br>";
+            echo 'FROM: ' . $mailFromAddress . '<br>';
+            echo 'rcpTO: ' . $rcpToRDM . '<br>';
+            echo 'Subject: ' . $subjectRDM . '<br>';
+            echo $messageRDM . '<br>';
+            echo '</p>';
+
+            echo '<p>';
+            echo "mail not send!<br>";
+            echo 'FROM: ' . $mailFromAddress . '<br>';
+            echo 'rcpTO: ' . $rcpToRespondent . '<br>';
+            echo 'Subject: ' . $subjectRespondent . '<br>';
+            echo $messageRespondent . '<br>';
+            echo '</p>';
+        }
+    } else {
+        echo '<div class="alert alert-danger">' . $uploadMessage . '</div>';
+    } // end 
+
+        ?>
+        </div>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+
+    </body>
+
+    </html>

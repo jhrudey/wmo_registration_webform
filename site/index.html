@@ -22,19 +22,19 @@
   <br>
   <p>This form must be completed by FGB researchers who are conducting
     medical research that is <a
-    href="https://english.ccmo.nl/investigators/legal-framework-for-medical-scientific-research/your-research-is-it-subject-to-the-wmo-or-not"
-    target="_blank">
-    subject to the WMO law</a> and
+      href="https://english.ccmo.nl/investigators/legal-framework-for-medical-scientific-research/your-research-is-it-subject-to-the-wmo-or-not"
+      target="_blank">
+      subject to the WMO law</a> and
     who are required to have insurance in place for their research subjects.
     This requirement is stated in the letter of approval received from a <a
-    href="https://english.ccmo.nl/mrecs/accredited-mrecs" target="_blank">
-    Medical Research Ethics Committee (METC)</a>, such as the
+      href="https://english.ccmo.nl/mrecs/accredited-mrecs" target="_blank">
+      Medical Research Ethics Committee (METC)</a>, such as the
     <a href="https://www.vumc.nl/research/overzicht/medisch-ethische-toetsingscommissie/over-metc-vumc.htm"
-     target="_blank">
-    Medical Ethics Review Committee of the VUmc</a>.
+      target="_blank">
+      Medical Ethics Review Committee of the VUmc</a>.
     In some cases, the approval letter will be from the
     <a href="https://english.ccmo.nl/mrecs/accredited-mrecs/central-committee-on-research-involving-human-subjects-ccmo"
-     target="_blank">Central Committee on Research Involving Human Subjects (CCMO)</a>.
+      target="_blank">Central Committee on Research Involving Human Subjects (CCMO)</a>.
   </p>
   <p> The data collected with this form will be used to inform VU Corporate Finance about
     the number of participants that need to be insured for the coming calendar
@@ -49,16 +49,16 @@
     coming year has changed, fill in this form once again with this new information.</p>
   </p>
   <p><strong>Ensure that you have completed this form by
-    September 30 of each calendar year</strong></p>
+      September 30 of each calendar year</strong></p>
 
   <p>If you have questions, contact
     <a href="mailto:research.data.fgb@vu.nl">
-    research.data.fgb@vu.nl</a>.</p>
+      research.data.fgb@vu.nl</a>.
+  </p>
 
-<br></br>
+  <br></br>
 
-  <form action="registration.php" target="_blank" method="post" enctype="multipart/form-data" class="needs-validation"
-    novalidate>
+  <form action="registration.php" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
     <div class="form-group row">
       <label for="title_research" class="col-sm-2 col-form-label">Title of research project:</label>
       <div class="col-sm-10">
@@ -73,8 +73,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="protocol_number" name="protocol_number"
-        placeholder="e.g. NL12345.123.12"
-        pattern="^NL\d{5}\.\d{3}\.\d{2}$" required>
+          placeholder="e.g. NL12345.123.12" pattern="^NL\d{5}\.\d{3}\.\d{2}$" required>
         <!-- I'd like to make a tooltip here, but I'm not having much luck. I was trying
         with CSS tooltips, but might want to try Popper. Looks like Popper doesn't really
         have an option to download the dependencies, they just want you to use CDN-->
@@ -87,8 +86,8 @@
     <div class="form-group row">
       <label for="metc_number" class="col-sm-2 col-form-label">METC (or CCMO) Registration Number:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="metc_number" name="metc_number"
-        placeholder="e.g. 2022.123" required>
+        <input type="text" class="form-control" id="metc_number" name="metc_number" placeholder="e.g. 2022.123"
+          required>
         <div class="invalid-feedback">
           Please enter a valid METC or CCMO registration number! This is usually listed under
           "Ons Kenmerk" on the approval letter. The number includes the year
@@ -97,7 +96,8 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="number_participants" class="col-sm-2 col-form-label">Number of participants requiring insurance:</label>
+      <label for="number_participants" class="col-sm-2 col-form-label">Number of participants requiring
+        insurance:</label>
       <div class="col-sm-10">
         <input type="number" class="form-control" id="number_participants" name="number_participants" min="1" required>
         <div class="invalid-feedback">
@@ -128,17 +128,18 @@
       <label for="telephone_number" class="col-sm-2 col-form-label">Principal investigator's telephone number:</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="telephone_number" name="telephone_number"
-        pattern="^0([0-9]{9}$|[0-9\-\s]{10}$|[0-9\-\s]{11}$)" required>
+          pattern="^0([0-9]{9}$|[0-9\-\s]{10}$|[0-9\-\s]{11}$)" required>
         <div class="invalid-feedback">
           Please enter a valid phone number!
         </div>
       </div>
     </div>
     <div class="form-group row">
-      <label for="email_prinicipal_investigator" class="col-sm-2 col-form-label">Principle investigator's e-mail address:</label>
+      <label for="email_prinicipal_investigator" class="col-sm-2 col-form-label">Principle investigator's e-mail
+        address:</label>
       <div class="col-sm-10">
-        <input type="email" class="form-control" id="email_prinicipal_investigator"
-        name="email_prinicipal_investigator" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" required>
+        <input type="email" class="form-control" id="email_prinicipal_investigator" name="email_prinicipal_investigator"
+          pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" required>
         <div class="invalid-feedback">
           Please enter a valid e-mail address!
         </div>
@@ -149,7 +150,7 @@
         (if not principal investigator):</label>
       <div class="col-sm-10">
         <input type="email" class="form-control" id="user_email" name="user_email"
-        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$">
+          pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$">
         <div class="invalid-feedback">
           Please enter a valid e-mail address!
         </div>
@@ -170,8 +171,8 @@
         insurance is required (<strong>PDF format only</strong>):</label>
       <div class="col-sm-10">
         <input type="hidden" name="MAX_FILE_SIZE" value="30000000" />
-        <input type="file" class="form-control" id="metc_letter" name="metc_letter" class="form-control" accept="application/pdf"
-          required>
+        <input type="file" class="form-control" id="metc_letter" name="metc_letter" class="form-control"
+          accept="application/pdf" required>
         <div class="invalid-feedback">
           Please upload a PDF of the letter wherein the METC or CCMO declared that
           participant insurance is necessary!
@@ -198,7 +199,7 @@
       autoclose: true,
       maxViewMode: 2
     });
-  // need to investigate datepicker further to restrict to only future dates //
+    // need to investigate datepicker further to restrict to only future dates //
 
     // force validation, disable submit button until all fields correct
     (function () {

@@ -27,7 +27,7 @@ function insertNewRegistration($formv)
         printf("Connect failed: %s\n", mysqli_connect_error());
         exit();
     }
-    $query = 'INSERT INTO registrations (title_research,protocol_number,metc_number,number_participants,end_date,principal_investigator,telephone_number,email_prinicipal_investigator,email,order_number,metc_letter) 
+    $query = 'INSERT INTO registrations (title_research,protocol_number,metc_number,number_participants,end_date,principal_investigator,telephone_number,email_prinicipal_investigator,email,order_number,metc_letter, comments_respondent) 
     VALUES (
         "' . $formv['title_research'] . '",
         "' . $formv['protocol_number'] . '",
@@ -40,15 +40,17 @@ function insertNewRegistration($formv)
         "' . $formv['email'] . '",
         "' . $formv['order_number'] . '",
         "' . $formv['filename'] . '",
-        "' . $fromv['comments_respondent'] .'"
+        "' . $formv['comments_respondent'] .'"
     );';
    // echo "<p>$query</p>";
 // FIXME: do not echo, only return!
     if (mysqli_query($mysqli, $query)) {
-        echo "New record created successfully";
+    //    echo "New record created successfully";
+    return;
     } else {
         echo "Error: " . $$query . "" . mysqli_error($mysqli);
+        return;
     }
-    print_r($formv);
-    return;
+    //print_r($formv);
+    //return;
 }
