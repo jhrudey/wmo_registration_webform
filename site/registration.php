@@ -18,7 +18,6 @@ $uploadSuccess = false;
 $uploaddir = '../data/';
 
 // Do input filtering
-// TODO: look at filters, correct for intended use!
 $formv['title_research']  = filter_input(INPUT_POST, 'title_research', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['protocol_number']   = filter_input(INPUT_POST, 'protocol_number', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['metc_number']   = filter_input(INPUT_POST, 'metc_number', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -26,14 +25,13 @@ $formv['number_participants']   = filter_input(INPUT_POST, 'number_participants'
 $formv['end_date']   = filter_input(INPUT_POST, 'end_date', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['principal_investigator'] = filter_input(INPUT_POST, 'principal_investigator', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['telephone_number']  = filter_input(INPUT_POST, 'telephone_number', FILTER_SANITIZE_SPECIAL_CHARS);
-$formv['email_prinicipal_investigator']  = filter_input(INPUT_POST, 'email_prinicipal_investigator', FILTER_SANITIZE_SPECIAL_CHARS);
-$formv['email']  = filter_input(INPUT_POST, 'user_email', FILTER_SANITIZE_SPECIAL_CHARS);
+$formv['email_prinicipal_investigator']  = filter_input(INPUT_POST, 'email_prinicipal_investigator', FILTER_SANITIZE_EMAIL);
+$formv['email']  = filter_input(INPUT_POST, 'user_email', FILTER_SANITIZE_EMAIL);
 $formv['order_number']  = filter_input(INPUT_POST, 'order_number', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['comments_respondent']  = filter_input(INPUT_POST, 'comments_respondent', FILTER_SANITIZE_SPECIAL_CHARS);
 
 // create a timestamp to use in the filename
 $letterTimestamp = date('YmdHi');
-// moved data-dir outside the site-dir
 
 // format filename: protocolNumber_letterTimestamp_originalName
 $uploadfile = $uploaddir . $formv['protocol_number'] . "_" . $letterTimestamp . "_" . basename($_FILES['metc_letter']['name']);
@@ -50,14 +48,12 @@ if (move_uploaded_file($_FILES['metc_letter']['tmp_name'], $uploadfile)) {
 }
 
 // ok, now we got the checks out of the way, we can start inserting/mailing....
-
 if ($uploadSuccess) {
-    // TODO: insert this into a database table....
     insertNewRegistration($formv);
 
-    // Confirmation Email
-    // TODO: send confirmation email to researcher
-    // Determine address to send to
+    // Sending Notificaition and Confirmation Emails
+
+    // Determine respondent address to use
     $toAddress = "";
     if (isset($formv['email']) && $formv['email'] != "") {
         $toAddress = $formv['email'];
@@ -111,20 +107,20 @@ if ($uploadSuccess) {
         // only try to send if checks are OK!
         if ($sendMyMail) {
             $mailRDM->send();
-
-            $okRDM = true;
+            // we're sending email, set $notificationMailOK variable to true
+            $notificationMailOK = true;
         }
     } catch (Exception $e) {
-        $okRDM = false;
+        // sending did not work for some reason! Set $okRMD to false
+        $notificationMailOK = false;
     }
     // --- end RDM Notification mail --
 
-    // --- start Respondent mail ---
-    $recipientAddress = $toAddress;
-
-    $rcpToRespondent = $recipientAddress;
+    // --- start Respondent confirmation mail ---
+    $rcpToRespondent = $toAddress;
     // compose message
     $subjectRespondent = 'WMO Insurance Registration: ' . $formv['title_research'] . '';
+
     $messageRespondent = '<html><body>';
     $messageRespondent .= '<p>';
     $messageRespondent .= 'Thank you for registering the information about your medical research that requires participants\' insurance. If you have any questions or comments please contact <a href="mailto:research.data.fgb@vu.nl">research.data.fgb@vu.nl</a>.<br><br>';
@@ -157,14 +153,14 @@ if ($uploadSuccess) {
         // only try to send if checks are OK!
         if ($sendMyMail) {
             $mailRespondent->send();
-            $okRespondent = true;
+            // we're sending email, set $confirmationMailOK to true
+            $confirmationMailOK = true;
         }
     } catch (Exception $e) {
-        $okRespondent = false;
+        // sending did not work for some reason! Set $confirmationMailOK to false
+        $confirmationMailOK = false;
     }
-
-    // --- end Respondent mail ---
-
+    // --- end Respondent confirmation mail ---
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -188,32 +184,29 @@ if ($uploadSuccess) {
         <br>
         <div class="container px-4 py-2">
         <?php
-
-        // -- display a send-message
-        if ($okRDM == true && $okRespondent == true) {
-
+        // -- display a send/fail message to respondent
+        if ($notificationMailOK == true && $confirmationMailOK == true) {  // if both messages send successfully
             echo '<h1 class="text-success"> Thank you!</h1>';
             echo '<p>';
             echo 'Your request was send to the Research Data Team.';
             echo '</p><p>';
             echo '<a href="./">Click here to go back to the request form</a>';
             echo '<p>';
-        } else {
+        } else {  // display error message
             echo '<h1 class="text-danger"> ERROR!</h1>';
             echo '<p>';
-            if ($okRespondent == false) {
+            if ($confirmationMailOK == false) {
                 echo '<div class="alert alert-danger"> Confirmation message could not be sent! Mailer Error: ' . $mailRespondent->ErrorInfo . '</div>';
             }
-            if ($okRDM == false) {
+            if ($notificationMailOK == false) {
                 echo '<div class="alert alert-danger"> Notification message could not be sent! Mailer Error: ' . $mailRespondent->ErrorInfo . '</div>';
             }
             echo '</p><p>';
             echo '<a href="./">Click here to go back to the request form</a>';
             echo '<p>';
         }
-
         // -------------------------------------------------
-        // just for debug!
+        // just for debug! FIXME: remove this!
         if (!$sendMyMail) {
             echo '<p>';
             echo "mail not send!<br>";
@@ -234,12 +227,10 @@ if ($uploadSuccess) {
     } else {
         echo '<div class="alert alert-danger">' . $uploadMessage . '</div>';
     } // end 
-
         ?>
         </div>
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.bundle.min.js"></script>
-
     </body>
 
     </html>
