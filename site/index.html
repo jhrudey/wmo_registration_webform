@@ -60,9 +60,12 @@
 
   <form action="registration.php" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
     <div class="form-group row">
-      <label for="title_research" class="col-sm-2 col-form-label">Title of research project:</label>
+      <label for="title_research" class="col-sm-2 col-form-label">Title of research project:
+      </label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="title_research" name="title_research" required>
+        <input type="text" class="form-control" id="title_research" name="title_research"
+        data-toggle="tooltip" data-placement="top" title="Enter the title that was submitted to
+        the METC or CCMO for review. Dutch titles are absolutely fine." required>
         <div class="invalid-feedback">
           Please enter the title of your research project!
         </div>
@@ -73,25 +76,24 @@
       </label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="protocol_number" name="protocol_number"
-          placeholder="e.g. NL12345.123.12" pattern="^NL\d{5}\.\d{3}\.\d{2}$" required>
-        <!-- I'd like to make a tooltip here, but I'm not having much luck. I was trying
-        with CSS tooltips, but might want to try Popper. Looks like Popper doesn't really
-        have an option to download the dependencies, they just want you to use CDN-->
+          pattern="^NL\d{5}\.\d{3}\.\d{2}$"
+          data-toggle="tooltip" data-placement="top" title="The protocol number will look
+          something like this: NL12345.123.12. Fill the number in exactly, including the periods" required>
         <div class="invalid-feedback">
-          Please enter a valid protocol number! The format should be
-          "NLXXXXX.XXX.XX where X represents the digits of the protocol number."
+          Please enter a valid protocol number!"
         </div>
       </div>
     </div>
     <div class="form-group row">
       <label for="metc_number" class="col-sm-2 col-form-label">METC (or CCMO) Registration Number:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="metc_number" name="metc_number" placeholder="e.g. 2022.123"
+        <input type="text" class="form-control" id="metc_number" name="metc_number"
+        data-toggle="tooltip" data-placement="top" title="The METC registration number will look
+        something like this: 2022.123. A CCMO number looks something like this: CCMO22.1234.
+        The number is usually listed under Ons Kenmerk on the approval letter."
           required>
         <div class="invalid-feedback">
-          Please enter a valid METC or CCMO registration number! This is usually listed under
-          "Ons Kenmerk" on the approval letter. The number includes the year
-          that your research was initially submitted for approval.
+          Please enter a valid METC or CCMO registration number!
         </div>
       </div>
     </div>
@@ -99,7 +101,11 @@
       <label for="number_participants" class="col-sm-2 col-form-label">Number of participants requiring
         insurance:</label>
       <div class="col-sm-10">
-        <input type="number" class="form-control" id="number_participants" name="number_participants" min="1" required>
+        <input type="number" class="form-control" id="number_participants" name="number_participants" min="1"
+        data-toggle="tooltip" data-placement="top" title="Enter the number of participants you expect to include
+        in the coming calendar year. If you need to provide additional information about the number of
+        participants, fill in the Comments field below."
+        required>
         <div class="invalid-feedback">
           Please enter the expected number of participants that will require insurance for the coming
           calendar year!
@@ -109,7 +115,8 @@
     <div class="form-group row">
       <label for="end_date" class="col-sm-2 col-form-label">Expected end date of research project:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="end_date" name="end_date" placeholder="yyyy-mm-dd" required>
+        <input type="text" class="form-control" id="end_date" name="end_date" placeholder="yyyy-mm-dd"
+        required>
         <div class="invalid-feedback">
           Please enter the date you expect your research project to end!
         </div>
@@ -159,10 +166,12 @@
     <div class="form-group row">
       <label for="order_number" class="col-sm-2 col-form-label">Cost Unit (a.k.a. WBS element or kostenplaats):</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="order_number" name="order_number" required>
+        <input type="text" class="form-control" id="order_number" name="order_number"
+        data-toggle="tooltip" data-placement="top" title="If you don't
+        know what your cost unit number is, you contact your supervisor for this information."
+        required>
         <div class="invalid-feedback">
-          Please enter your cost unit number (also known as WBS elemnent or kostenplaats)! If you don't
-          know your cost unit number, contact your supervisor.
+          Please enter your cost unit number!
         </div>
       </div>
     </div>
@@ -172,13 +181,29 @@
       <div class="col-sm-10">
         <input type="hidden" name="MAX_FILE_SIZE" value="30000000" />
         <input type="file" class="form-control" id="metc_letter" name="metc_letter" class="form-control"
-          accept="application/pdf" required>
+          accept="application/pdf"
+          data-toggle="tooltip" data-placement="top" title="Please upload only one letter. There shouldn't
+          be more than one letter from the METC/CCMO declaring the need for insurance. If you
+          have more than one letter, you can either merge the PDFs or forward additional letters to
+          research.data.fgb@vu.nl."
+          required>
         <div class="invalid-feedback">
-          Please upload a PDF of the letter wherein the METC or CCMO declared that
-          participant insurance is necessary!
+          Please upload a PDF of the letter from the METC/CCMO!
         </div>
       </div>
     </div>
+    <div class="form-group row">
+      <label for="comments_respondent" class="col-sm-2 col-form-label">Comments:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="title_research" name="title_research"
+        data-toggle="tooltip" data-placement="top" title="If you have any additional context
+        to include please enter that information here.  You can also forward additional information
+        to research.data.fgb@vu.nl">
+      </div>
+    </div>
+
+  <br></br>
+
     <div class="form-group row">
 
       <input type="submit" class="btn btn-primary btn-large" value="Submit">
@@ -187,20 +212,26 @@
   </form>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/bootstrap-datepicker.min.js"></script>
+
   <script>
-    // datepicker config, use normal dd-mm-yyyy dates, default date +6months
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+  </script>
+
+  <script>
+
+    // datepicker config
     $('#end_date').datepicker({
       format: "yyyy-mm-dd",
       weekStart: 1, //monday
-      defaultViewDate: "+6m",
       language: "en",
       autoclose: true,
-      maxViewMode: 2
+      maxViewMode: 2,
     });
-    // need to investigate datepicker further to restrict to only future dates //
-
     // force validation, disable submit button until all fields correct
     (function () {
       //'use strict';
