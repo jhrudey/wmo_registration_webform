@@ -5,10 +5,22 @@
 ### Install CSS/JavaScript dependencies using Yarn
 
 ```bash
+# starting from scratch? Initialize yarn for this code
+$ yarn init
+
+# add the dependencies we need for this
+$ yarn add jquery
+$ yarn add @popperjs/core
+$ yarn add bootstrap
+$ yarm add bootstrap-datepicker
+
+# and install the new packages
 $ yarn install
 ```
 
 ### Install PHP dependencies using Composer
+
+Setup 'PHPMailer/PHPMailer: The classic email sending library for PHP'.
 
 ```bash
 $ composer require phpmailer/phpmailer
@@ -66,20 +78,34 @@ $mysqldb   = 'some_database';
 
 Make sure the data-folder is well protected. At least **deny** directory listing with a .htaccess file:
 
-`.htaccess` file: 
+`data/.htaccess` file: 
 
 ```apache
 Options -Indexes
 ```
 ### Data-folder for PDF's 
 
-Make sure the data-folder is writable for the webserver, for Ubuntu do something like:
+Make sure the data-folder is writable for the webserver and also for the administratice user, for Ubuntu do something like:
 
 ```bash 
-$ sudo chown myuser:www-data data/
+# set user:group for data-folder
+$ sudo chown www-data:myuser data/
+
+# set write permissions for group
 $ sudo chmod g+w data/
 ```
-### Allow bigger file upload (php.ini)
+Make sure all uploaded files automatically get correct permissions for the group `myuser` accessing the files.
+
+```bash
+# set sticky bit on folder
+$ sudo chmod g+s data/
+
+# set permissions for newly created files
+$ sudo setfacl -dm u::rw,g::rw,o::r data/
+```
+### Allow larger file upload
+
+Make sure **maximum filesize** is set large enough, edit: `/etc/php.ini` 
 
 ```php
 post_max_size = 16M
@@ -88,7 +114,8 @@ upload_max_filesize = 16M
 
 ## Email
 
-A confirmation email will be sent to `email` (if available) or `email_prinicipal_investigator` and to research.data.fgb@vu.nl to inform there is a new submission.
+A confirmation email will be sent to `email` (if available) or,
+alternatively `email_prinicipal_investigator` and to research.data.fgb@vu.nl to inform there is a new submission.
 
 ### Email credentials
 
