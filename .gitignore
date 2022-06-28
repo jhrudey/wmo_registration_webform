@@ -1,6 +1,7 @@
 # ignore data folder contents
 data/*
-!data/.gitkeep 
+!data/.gitkeep
+!data/.htaccess
 # ignore src vendor but keep site/vendor
 **/vendor
 !site/vendor
