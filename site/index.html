@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/bootstrap-datepicker.standalone.min.css">
+  <title class="title">Participant Insurance Registration Form</title>
+
+</head>
+
+<body>
+
+  <img src="img/FGB_logo_rgb_wit_en_tcm264-852539.svg">
+  <h3>Registration Form for FGB Research Projects Requiring Insurance for Research Subjects</h3>
+  <br>
+  <p>This form must be completed by FGB researchers who are conducting
+    medical research that is <a
+      href="https://english.ccmo.nl/investigators/legal-framework-for-medical-scientific-research/your-research-is-it-subject-to-the-wmo-or-not"
+      target="_blank">
+      subject to the WMO law</a> and
+    who are required to have insurance in place for their research subjects.
+    This requirement is stated in the letter of approval received from a <a
+      href="https://english.ccmo.nl/mrecs/accredited-mrecs" target="_blank">
+      Medical Research Ethics Committee (METC)</a>, such as the
+    <a href="https://www.vumc.nl/research/overzicht/medisch-ethische-toetsingscommissie/over-metc-vumc.htm"
+      target="_blank">
+      Medical Ethics Review Committee of the VUmc</a>.
+    In some cases, the approval letter will be from the
+    <a href="https://english.ccmo.nl/mrecs/accredited-mrecs/central-committee-on-research-involving-human-subjects-ccmo"
+      target="_blank">Central Committee on Research Involving Human Subjects (CCMO)</a>.
+  </p>
+  <p> The data collected with this form will be used to inform VU Corporate Finance about
+    the number of participants that need to be insured for the coming calendar
+    year. It is important that the information you provide is up-to-date and accurate so that
+    you receive the necessary insurance coverage.
+  </p>
+  <p>If you are uncertain whether you completed the form previously, fill it in again to
+    ensure you are included in the calculations.
+  </p>
+  <p> If you have previously completed this form, but the end date of your
+    research project has been extended into the coming calendar year and/or the number of participants for the
+    coming year has changed, fill in this form once again with this new information.</p>
+  </p>
+  <p><strong>Ensure that you have completed this form by
+      September 30 of each calendar year</strong></p>
+
+  <p>If you have questions, contact
+    <a href="mailto:research.data.fgb@vu.nl">
+      research.data.fgb@vu.nl</a>.
+  </p>
+
+  <br></br>
+
+  <form action="registration.php" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+    <div class="form-group row">
+      <label for="title_research" class="col-sm-2 col-form-label">Title of research project:
+      </label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="title_research" name="title_research"
+        data-toggle="tooltip" data-placement="top" title="Enter the title that was submitted to
+        the METC or CCMO for review. Dutch titles are absolutely fine." required>
+        <div class="invalid-feedback">
+          Please enter the title of your research project!
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="protocol_number" class="col-sm-2 col-form-label">Research protocol number:
+      </label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="protocol_number" name="protocol_number"
+          pattern="^NL\d{5}\.\d{3}\.\d{2}$"
+          data-toggle="tooltip" data-placement="top" title="The protocol number will look
+          something like this: NL12345.123.12. Fill the number in exactly, including the periods" required>
+        <div class="invalid-feedback">
+          Please enter a valid protocol number!"
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="metc_number" class="col-sm-2 col-form-label">METC (or CCMO) Registration Number:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="metc_number" name="metc_number"
+        data-toggle="tooltip" data-placement="top" title="The METC registration number will look
+        something like this: 2022.123. A CCMO number looks something like this: CCMO22.1234.
+        The number is usually listed under Ons Kenmerk on the approval letter."
+          required>
+        <div class="invalid-feedback">
+          Please enter a valid METC or CCMO registration number!
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="number_participants" class="col-sm-2 col-form-label">Number of participants requiring
+        insurance:</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="number_participants" name="number_participants" min="1"
+        data-toggle="tooltip" data-placement="top" title="Enter the number of participants you expect to include
+        in the coming calendar year. If you need to provide additional information about the number of
+        participants, fill in the Comments field below."
+        required>
+        <div class="invalid-feedback">
+          Please enter the expected number of participants that will require insurance for the coming
+          calendar year!
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="end_date" class="col-sm-2 col-form-label">Expected end date of research project:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="end_date" name="end_date" placeholder="yyyy-mm-dd"
+        required>
+        <div class="invalid-feedback">
+          Please enter the date you expect your research project to end!
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="principal_investigator" class="col-sm-2 col-form-label">Name of principal investigator:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="principal_investigator" name="principal_investigator" required>
+        <div class="invalid-feedback">
+          Please enter the name of the principal investigator!
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="telephone_number" class="col-sm-2 col-form-label">Principal investigator's telephone number:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="telephone_number" name="telephone_number"
+          pattern="^0([0-9]{9}$|[0-9\-\s]{10}$|[0-9\-\s]{11}$)" required>
+        <div class="invalid-feedback">
+          Please enter a valid phone number!
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="email_prinicipal_investigator" class="col-sm-2 col-form-label">Principle investigator's e-mail
+        address:</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="email_prinicipal_investigator" name="email_prinicipal_investigator"
+          pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" required>
+        <div class="invalid-feedback">
+          Please enter a valid e-mail address!
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="user_email" class="col-sm-2 col-form-label">E-mail address of person completing form
+        (if not principal investigator):</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="user_email" name="user_email"
+          pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$">
+        <div class="invalid-feedback">
+          Please enter a valid e-mail address!
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="order_number" class="col-sm-2 col-form-label">Cost Unit (a.k.a. WBS element or kostenplaats):</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="order_number" name="order_number"
+        data-toggle="tooltip" data-placement="top" title="If you don't
+        know what your cost unit number is, you contact your supervisor for this information."
+        required>
+        <div class="invalid-feedback">
+          Please enter your cost unit number!
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="metc_letter" class="col-sm-2 col-form-label">Letter from METc wherein it is stated that
+        insurance is required (<strong>PDF format only</strong>):</label>
+      <div class="col-sm-10">
+        <input type="hidden" name="MAX_FILE_SIZE" value="30000000" />
+        <input type="file" class="form-control" id="metc_letter" name="metc_letter" class="form-control"
+          accept="application/pdf"
+          data-toggle="tooltip" data-placement="top" title="Please upload only one letter. There shouldn't
+          be more than one letter from the METC/CCMO declaring the need for insurance. If you
+          have more than one letter, you can either merge the PDFs or forward additional letters to
+          research.data.fgb@vu.nl."
+          required>
+        <div class="invalid-feedback">
+          Please upload a PDF of the letter from the METC/CCMO!
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="comments_respondent" class="col-sm-2 col-form-label">Comments:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="comments_respondent" name="comments_respondent"
+        data-toggle="tooltip" data-placement="top" title="If you have any additional context
+        to include please enter that information here.  You can also forward additional information
+        to research.data.fgb@vu.nl">
+      </div>
+    </div>
+
+  <br></br>
+
+    <div class="form-group row">
+
+      <input type="submit" class="btn btn-primary btn-large" value="Submit">
+    </div>
+
+  </form>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/bootstrap-datepicker.min.js"></script>
+
+  <script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+  </script>
+
+  <script>
+
+    // datepicker config
+    $('#end_date').datepicker({
+      format: "yyyy-mm-dd",
+      weekStart: 1, //monday
+      language: "en",
+      startDate: "0d",
+      autoclose: true,
+      maxViewMode: 2,
+    });
+    // force validation, disable submit button until all fields correct
+    (function () {
+      //'use strict';
+      window.addEventListener('load', function () {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
+
+</body>
+
+</html>

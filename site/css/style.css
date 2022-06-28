@@ -1,0 +1,30 @@
+img {
+  width:400px;
+  height:110px;
+}
+
+body {
+  padding: 0 10% 5% 10%;
+}
+
+
+input {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+/* tooltip styling */
+
+.tooltip-inner {
+    min-width: 100px;
+    max-width: 500px;
+}
+
+/* adjust size of toolstip on devices other than desktops */
+
+@media (max-width: 320px) {
+    .tooltip-inner {
+         min-width: initial;
+         width: 320px;
+    }
+}
