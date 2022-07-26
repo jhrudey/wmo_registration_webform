@@ -25,31 +25,32 @@
       href="https://english.ccmo.nl/investigators/legal-framework-for-medical-scientific-research/your-research-is-it-subject-to-the-wmo-or-not"
       target="_blank">
       subject to the WMO law</a> and
-    who are required to have insurance in place for their research subjects.
-    This requirement is stated in the letter of approval received from a <a
+    who are required to have insurance for their research subjects.
+    This requirement is stated in the letter of approval received from the <a
       href="https://english.ccmo.nl/mrecs/accredited-mrecs" target="_blank">
-      Medical Research Ethics Committee (METC)</a>, such as the
+      Medical Research Ethics Committee (METC)</a> that reviewed the proposed research, such as the
     <a href="https://www.vumc.nl/research/overzicht/medisch-ethische-toetsingscommissie/over-metc-vumc.htm"
       target="_blank">
-      Medical Ethics Review Committee of the VUmc</a>.
-    In some cases, the approval letter will be from the
+      Medical Ethics Review Committee of the VUmc</a> or,
+    in some cases, the
     <a href="https://english.ccmo.nl/mrecs/accredited-mrecs/central-committee-on-research-involving-human-subjects-ccmo"
       target="_blank">Central Committee on Research Involving Human Subjects (CCMO)</a>.
   </p>
-  <p> The data collected with this form will be used to inform VU Corporate Finance about
+  <p>The data collected with this form will be used to inform VU Corporate Finance about
     the number of participants that need to be insured for the coming calendar
     year. It is important that the information you provide is up-to-date and accurate so that
     you receive the necessary insurance coverage.
   </p>
-  <p>If you are uncertain whether you completed the form previously, fill it in again to
-    ensure you are included in the calculations.
+  <p>If you are uncertain whether you completed the form previously and your research
+    project will continue into the coming calendar year, fill the form in again to
+    ensure that you are included in the calculations.
   </p>
   <p> If you have previously completed this form, but the end date of your
     research project has been extended into the coming calendar year and/or the number of participants for the
-    coming year has changed, fill in this form once again with this new information.</p>
+    coming calendar year has changed, then fill in this form again with the new information.</p>
   </p>
   <p><strong>Ensure that you have completed this form by
-      September 30 of each calendar year</strong></p>
+      September 30 of each calendar year.</strong></p>
 
   <p>If you have questions, contact
     <a href="mailto:research.data.fgb@vu.nl">
@@ -80,7 +81,7 @@
           data-toggle="tooltip" data-placement="top" title="The protocol number will look
           something like this: NL12345.123.12. Fill the number in exactly, including the periods" required>
         <div class="invalid-feedback">
-          Please enter a valid protocol number!"
+          Please enter a valid protocol number!
         </div>
       </div>
     </div>
@@ -88,9 +89,10 @@
       <label for="metc_number" class="col-sm-2 col-form-label">METC (or CCMO) Registration Number:</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="metc_number" name="metc_number"
-        data-toggle="tooltip" data-placement="top" title="The METC registration number will look
-        something like this: 2022.123. A CCMO number looks something like this: CCMO22.1234.
-        The number is usually listed under Ons Kenmerk on the approval letter."
+        data-toggle="tooltip" data-placement="top" title="The METC registration number will often look
+        something like '2022.123', however different METCs may have a different numbering system.
+        A CCMO number looks something like this 'CCMO22.1234'.
+        You will often find the number listed under Ons Kenmerk on the approval letter."
           required>
         <div class="invalid-feedback">
           Please enter a valid METC or CCMO registration number!
@@ -99,12 +101,12 @@
     </div>
     <div class="form-group row">
       <label for="number_participants" class="col-sm-2 col-form-label">Number of participants requiring
-        insurance:</label>
+        insurance next year:</label>
       <div class="col-sm-10">
         <input type="number" class="form-control" id="number_participants" name="number_participants" min="1"
         data-toggle="tooltip" data-placement="top" title="Enter the number of participants you expect to include
         in the coming calendar year. If you need to provide additional information about the number of
-        participants, fill in the 'Comments' field below."
+        participants, enter that information in the 'Comments' field below."
         required>
         <div class="invalid-feedback">
           Please enter the expected number of participants that will require insurance for the coming
@@ -113,12 +115,12 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="end_date" class="col-sm-2 col-form-label">Expected end date of research project:</label>
+      <label for="end_date" class="col-sm-2 col-form-label">Expected end date of the research project:</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="end_date" name="end_date" placeholder="yyyy-mm-dd"
         required>
         <div class="invalid-feedback">
-          Please enter the date you expect your research project to end!
+          Please enter the date when you expect the research project to end!
         </div>
       </div>
     </div>
@@ -164,11 +166,13 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="order_number" class="col-sm-2 col-form-label">Cost Unit (a.k.a. WBS element or kostenplaats):</label>
+      <label for="order_number" class="col-sm-2 col-form-label">Cost Unit (kostendrager)
+        or WBS element from SAP4/HANA to which insurance premium costs will be charged:</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="order_number" name="order_number"
-        data-toggle="tooltip" data-placement="top" title="If you don't
-        know what your cost unit number is, you can contact your supervisor for this information."
+        data-toggle="tooltip" data-placement="top" title="If you don't know which cost unit
+        number to use, contact your supervisor or your department manager for assistance.
+        Make sure to use the number that is registered in the SAP4/HANA system."
         required>
         <div class="invalid-feedback">
           Please enter your cost unit number!
