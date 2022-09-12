@@ -1,7 +1,7 @@
 <?php
 /**
  * @project: wmo_insurence_resistration
- * 
+ *
  * Functions
  */
 
@@ -27,12 +27,13 @@ function insertNewRegistration($formv)
         printf("Connect failed: %s\n", mysqli_connect_error());
         exit();
     }
-    $query = 'INSERT INTO registrations (title_research,protocol_number,metc_number,number_participants,end_date,principal_investigator,telephone_number,email_prinicipal_investigator,email,order_number,metc_letter, comments_respondent) 
+    $query = 'INSERT INTO registrations (title_research,protocol_number,metc_number,number_participants,begin_date,end_date,principal_investigator,telephone_number,email_prinicipal_investigator,email,order_number,metc_letter, comments_respondent)
     VALUES (
         "' . $formv['title_research'] . '",
         "' . $formv['protocol_number'] . '",
         "' . $formv['metc_number'] . '",
         ' . $formv['number_participants'] . ',
+        "' . $formv['begin_date'] . '",
         "' . $formv['end_date'] . '",
         "' . $formv['principal_investigator'] . '",
         "' . $formv['telephone_number'] . '",
