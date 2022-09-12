@@ -22,6 +22,7 @@ $formv['title_research']  = filter_input(INPUT_POST, 'title_research', FILTER_SA
 $formv['protocol_number']   = filter_input(INPUT_POST, 'protocol_number', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['metc_number']   = filter_input(INPUT_POST, 'metc_number', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['number_participants']   = filter_input(INPUT_POST, 'number_participants', FILTER_SANITIZE_NUMBER_INT);
+$formv['begin_date']   = filter_input(INPUT_POST, 'begin_date', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['end_date']   = filter_input(INPUT_POST, 'end_date', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['principal_investigator'] = filter_input(INPUT_POST, 'principal_investigator', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['telephone_number']  = filter_input(INPUT_POST, 'telephone_number', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -66,7 +67,7 @@ if ($uploadSuccess) {
         $sendMyMail = false;
     }
 
-    // FIXME: remove this ($sendMyMail = false;) 
+    // FIXME: remove this ($sendMyMail = false;)
     // $sendMyMail = false;
 
     // --- start RDM Notification mail --
@@ -175,7 +176,7 @@ if ($uploadSuccess) {
         <!-- Local CSS -->
         <link rel="stylesheet" href="css/style.css">
 
-        <title class="title">Registration - articipant Insurance Registration Form</title>
+        <title class="title">Registration Participant Insurance Registration Form</title>
     </head>
 
     <body>
@@ -226,7 +227,7 @@ if ($uploadSuccess) {
         }
     } else {
         echo '<div class="alert alert-danger">' . $uploadMessage . '</div>';
-    } // end 
+    } // end
         ?>
         </div>
         <script src="js/jquery.min.js"></script>
