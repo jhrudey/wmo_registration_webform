@@ -26,7 +26,7 @@ $formv['begin_date']   = filter_input(INPUT_POST, 'begin_date', FILTER_SANITIZE_
 $formv['end_date']   = filter_input(INPUT_POST, 'end_date', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['principal_investigator'] = filter_input(INPUT_POST, 'principal_investigator', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['telephone_number']  = filter_input(INPUT_POST, 'telephone_number', FILTER_SANITIZE_SPECIAL_CHARS);
-$formv['email_prinicipal_investigator']  = filter_input(INPUT_POST, 'email_prinicipal_investigator', FILTER_SANITIZE_EMAIL);
+$formv['email_principal_investigator']  = filter_input(INPUT_POST, 'email_principal_investigator', FILTER_SANITIZE_EMAIL);
 $formv['email']  = filter_input(INPUT_POST, 'user_email', FILTER_SANITIZE_EMAIL);
 $formv['order_number']  = filter_input(INPUT_POST, 'order_number', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['comments_respondent']  = filter_input(INPUT_POST, 'comments_respondent', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -59,8 +59,8 @@ if ($uploadSuccess) {
     if (isset($formv['email']) && $formv['email'] != "") {
         $toAddress = $formv['email'];
         $sendMyMail = true;
-    } elseif (isset($formv['email_prinicipal_investigator']) && $formv['email_prinicipal_investigator'] != "") {
-        $toAddress = $formv['email_prinicipal_investigator'];
+    } elseif (isset($formv['email_principal_investigator']) && $formv['email_principal_investigator'] != "") {
+        $toAddress = $formv['email_principal_investigator'];
         $sendMyMail = true;
     } else {
         die("No valid emailaddress found!");
