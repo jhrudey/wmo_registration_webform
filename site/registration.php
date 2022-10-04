@@ -29,6 +29,7 @@ $formv['telephone_number']  = filter_input(INPUT_POST, 'telephone_number', FILTE
 $formv['email_principal_investigator']  = filter_input(INPUT_POST, 'email_principal_investigator', FILTER_SANITIZE_EMAIL);
 $formv['email']  = filter_input(INPUT_POST, 'user_email', FILTER_SANITIZE_EMAIL);
 $formv['order_number']  = filter_input(INPUT_POST, 'order_number', FILTER_SANITIZE_SPECIAL_CHARS);
+$formv['high_risk']  = filter_input(INPUT_POST, 'high_risk', FILTER_SANITIZE_SPECIAL_CHARS);
 $formv['comments_respondent']  = filter_input(INPUT_POST, 'comments_respondent', FILTER_SANITIZE_SPECIAL_CHARS);
 
 // create a timestamp to use in the filename

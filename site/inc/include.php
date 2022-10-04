@@ -27,7 +27,7 @@ function insertNewRegistration($formv)
         printf("Connect failed: %s\n", mysqli_connect_error());
         exit();
     }
-    $query = 'INSERT INTO registrations (title_research,protocol_number,metc_number,number_participants,begin_date,end_date,principal_investigator,telephone_number,email_principal_investigator,email,order_number,metc_letter, comments_respondent)
+    $query = 'INSERT INTO registrations (title_research,protocol_number,metc_number,number_participants,begin_date,end_date,principal_investigator,telephone_number,email_principal_investigator,email,order_number, high_risk, metc_letter, comments_respondent)
     VALUES (
         "' . $formv['title_research'] . '",
         "' . $formv['protocol_number'] . '",
@@ -40,6 +40,7 @@ function insertNewRegistration($formv)
         "' . $formv['email_principal_investigator'] . '",
         "' . $formv['email'] . '",
         "' . $formv['order_number'] . '",
+        "' . $formv['high_risk'] . '",
         "' . $formv['filename'] . '",
         "' . $formv['comments_respondent'] .'"
     );';
