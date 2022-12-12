@@ -1,4 +1,8 @@
 
+.headerImage {
+  width: 500px;
+  object-fit: scale-down; max-width: 100%
+}
 
 body {
   padding: 0 10% 5% 10%;
@@ -23,13 +27,5 @@ input {
     .tooltip-inner {
          min-width: initial;
          width: 320px;
-    }
-}
-
-/* adjust size of image on devices other than desktops */
-
-@media (max-width: 320px) {
-    .headerImage {
-         width: 300px;
     }
 }
