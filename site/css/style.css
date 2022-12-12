@@ -1,4 +1,6 @@
 
+/* use object-fit to auto resize for smaller screens like mobile*/
+
 .headerImage {
   width: 500px;
   object-fit: scale-down; max-width: 100%
