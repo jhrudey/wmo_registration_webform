@@ -181,7 +181,7 @@ if ($uploadSuccess) {
     </head>
 
     <body>
-        <img src="img/FGB_logo_rgb_wit_en_tcm264-852539.svg">
+        <img class="headerImage" src="img/FGB_logo_rgb_wit_en_tcm264-852539.svg">
         <h3>Registration Form for FGB Research Projects Requiring Insurance for Research Subjects</h3>
         <br>
         <div class="container px-4 py-2">
@@ -190,7 +190,7 @@ if ($uploadSuccess) {
         if ($notificationMailOK == true && $confirmationMailOK == true) {  // if both messages send successfully
             echo '<h1 class="text-success"> Thank you!</h1>';
             echo '<p>';
-            echo 'Your request was send to the Research Data Team.';
+            echo 'Your request was sent to the Research and Policy Support Team.';
             echo '</p><p>';
             echo '<a href="./">Click here to go back to the request form</a>';
             echo '<p>';

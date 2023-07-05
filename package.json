@@ -1,6 +1,6 @@
 {
   "name": "wmo_insurance_registration",
-  "version": "1.1.0",
+  "version": "1.2.1",
   "description": "Registration Form For FGB Research Projects Requiring Research Participants Insurance",
   "main": "index.html",
   "repository": "git@bitbucket.org:rdm-webpage/wmo_insurance_registration.git",
