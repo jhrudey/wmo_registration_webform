@@ -12,10 +12,22 @@ $ yarn init
 $ yarn add jquery
 $ yarn add @popperjs/core
 $ yarn add bootstrap
-$ yarm add bootstrap-datepicker
+$ yarn add bootstrap-datepicker
 
 # and install the new packages
 $ yarn install
+```
+
+### Annually update dependencies
+
+```bash
+
+$ yarn upgrade-interactive
+
+# or alternatively yarn upgrade to auto update
+# follow prompts, may need to install yarn again if out of date
+# once updates are made will see changes to yarn.lock file 
+
 ```
 
 ### Install PHP dependencies using Composer
@@ -30,7 +42,7 @@ $ composer require phpmailer/phpmailer
 
 Move relevant files to css/js-folders in `/site/`
 
-```bash 
+```bash
 $ yarn buildme
 ```
 
@@ -78,16 +90,16 @@ $mysqldb   = 'some_database';
 
 Make sure the data-folder is well protected. At least **deny** directory listing with a .htaccess file:
 
-`data/.htaccess` file: 
+`data/.htaccess` file:
 
 ```apache
 Options -Indexes
 ```
-### Data-folder for PDF's 
+### Data-folder for PDF's
 
 Make sure the data-folder is writable for the webserver and also for the administratice user, for Ubuntu do something like:
 
-```bash 
+```bash
 # set user:group for data-folder
 $ sudo chown www-data:myuser data/
 
@@ -105,7 +117,7 @@ $ sudo setfacl -dm u::rw,g::rw,o::r data/
 ```
 ### Allow larger file upload
 
-Make sure **maximum filesize** is set large enough, edit: `/etc/php.ini` 
+Make sure **maximum filesize** is set large enough, edit: `/etc/php.ini`
 
 ```php
 post_max_size = 16M
