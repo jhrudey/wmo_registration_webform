@@ -123,3 +123,24 @@ Make sure **maximum filesize** is set large enough, edit: `/etc/php.ini`
 post_max_size = 16M
 upload_max_filesize = 16M
 ```
+
+## Email
+
+A confirmation email will be sent to `email` (if available) or,
+alternatively `email_prinicipal_investigator` and to research.data.fgb@vu.nl to inform there is a new submission.
+
+### Email credentials
+
+Create/edit the `site/inc/mail.cfg.php` file (.gitignore) to store the credentials:
+
+```php
+<?php
+$mailHost = 'mails.vu.nl';
+$mailUser = 'mailusername';                    
+$mailPasswd = 'mailuserpassword';     
+
+$mailFromAddress = 'mailadres@vu.nl';
+$mailFromDisplayName  ='My Displayname';
+
+$researchDataMailAddress = 'research.data.fgb@vu.nl';
+```
