@@ -10,7 +10,8 @@ site/inc/db.cfg.php
 site/inc/mail.cfg.php
 # ignore src node_modules
 **/node_modules
-# ignore some build specific files 
+# ignore some build specific files
 **/.vscode
 yarn.lock
 composer.lock
+.DS_Store
